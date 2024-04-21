@@ -1,0 +1,7 @@
+setup.py
+PIPE_LINE_PROJECT.egg-info/PKG-INFO
+PIPE_LINE_PROJECT.egg-info/SOURCES.txt
+PIPE_LINE_PROJECT.egg-info/dependency_links.txt
+PIPE_LINE_PROJECT.egg-info/requires.txt
+PIPE_LINE_PROJECT.egg-info/top_level.txt
+src/__init__.py
