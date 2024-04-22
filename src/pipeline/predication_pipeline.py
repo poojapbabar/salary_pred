@@ -1,28 +1,31 @@
-import sys 
-import os 
-from src.exception import CustomException 
-from src.logger import logging 
+import os
+import sys
 from src.utils import load_obj
 import pandas as pd
+from src.logger import logging
+from src.exception import CustomException
 
-class PredictPipeline: 
+class PredictPipeline:
     def __init__(self):
         pass
 
-    def predict(self, features): 
-        try: 
+    def predict(self, features):
+        try:
             preprocessor_path = os.path.join('artifacts', 'preprocessor.pkl')
-            model_path = os.path.join("artifacts", "model.pkl")
+            model_path = os.path.join('artifacts','model.pkl')
 
             preprocessor = load_obj(preprocessor_path)
             model = load_obj(model_path)
 
             data_scaled = preprocessor.transform(features)
             pred = model.predict(data_scaled)
+
             return pred
-        except Exception as e: 
-            logging.info("Error occurred in predict function in prediction_pipeline location")
-            raise CustomException(e, sys)
+
+        except Exception as e:
+            logging.error('Error occurred in predict function', exc_info=True)
+            raise CustomException(e)
+
 
 class CustomData:
     def __init__(self, age: int, educational_num: int, hours_per_week: int, workclass: str, occupation: str):
@@ -46,5 +49,5 @@ class CustomData:
             logging.info("DataFrame created")
             return df
         except Exception as e:
-            logging.info("Error occurred in get_data_as_dataframe function in prediction_pipeline")
-            raise CustomException(e, sys) 
+            logging.error("Error occurred in get_data_as_dataframe function in prediction_pipeline")
+            raise CustomException(e, sys)
