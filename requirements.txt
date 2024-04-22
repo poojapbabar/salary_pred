@@ -1,7 +1,10 @@
-pandas 
-numpy 
-flask 
-scikit-learn
+pandas
+numpy
 seaborn
-datetime
--e .
+matplotlib
+scikit-learn
+catboost
+xgboost
+Flask
+
+#-e .
